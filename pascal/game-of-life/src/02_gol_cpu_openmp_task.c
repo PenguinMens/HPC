@@ -19,25 +19,40 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
         n_i[6] = i + 1; n_j[6] = j - 1;
         n_i[7] = i;     n_j[7] = j - 1;
 
-        // Check each neighbor's status and count live neighbors
-        if(n_i[0] >= 0 && n_j[0] >= 0 && current_grid[n_i[0] * m + n_j[0]] == ALIVE) neighbours++;
-        if(n_i[1] >= 0 && current_grid[n_i[1] * m + n_j[1]] == ALIVE) neighbours++;
-        if(n_i[2] >= 0 && n_j[2] < m && current_grid[n_i[2] * m + n_j[2]] == ALIVE) neighbours++;
-        if(n_j[3] < m && current_grid[n_i[3] * m + n_j[3]] == ALIVE) neighbours++;
-        if(n_i[4] < n && n_j[4] < m && current_grid[n_i[4] * m + n_j[4]] == ALIVE) neighbours++;
-        if(n_i[5] < n && current_grid[n_i[5] * m + n_j[5]] == ALIVE) neighbours++;
-        if(n_i[6] < n && n_j[6] >= 0 && current_grid[n_i[6] * m + n_j[6]] == ALIVE) neighbours++;
-        if(n_j[7] >= 0 && current_grid[n_i[7] * m + n_j[7]] == ALIVE) neighbours++;
 
         
         // Apply rules of the Game of Life to update the next state of the current cell
-        int temp = i*m + j;
-        if(current_grid[temp] == ALIVE && (neighbours == 2 || neighbours == 3)){
-            next_grid[temp] = ALIVE;  // Cell remains alive
-        } else if(current_grid[temp] == DEAD && neighbours == 3){
-            next_grid[temp] = ALIVE;  // Cell becomes alive
+        if(i > 0 && j > 0 && i < n-1 && j < m-1){
+
+            if(current_grid[k-m-1] == ALIVE) neighbours++;
+            if(current_grid[k-m] == ALIVE) neighbours++;
+            if(current_grid[k-m+1] == ALIVE) neighbours++;
+            if(current_grid[k-1] == ALIVE) neighbours++;
+            if(current_grid[k+1] == ALIVE) neighbours++;
+            if(current_grid[k+m-1] == ALIVE) neighbours++;
+            if(current_grid[k+m] == ALIVE) neighbours++;
+            if(current_grid[k+m+1] == ALIVE) neighbours++;
+
+        }
+        else{
+            // Check each neighbor's status and count live neighbors
+            if(n_i[0] >= 0 && n_j[0] >= 0 && current_grid[k-m-1] == ALIVE) neighbours++;
+            if(n_i[1] >= 0 && current_grid[k-m] == ALIVE) neighbours++;
+            if(n_i[2] >= 0 && n_j[2] < m && current_grid[k-m+1] == ALIVE) neighbours++;
+            if(n_j[3] < m && current_grid[k+1] == ALIVE) neighbours++;
+            if(n_i[4] < n && n_j[4] < m && current_grid[k+m+1] == ALIVE) neighbours++;
+            if(n_i[5] < n && current_grid[k+m] == ALIVE) neighbours++;
+            if(n_i[6] < n && n_j[6] >= 0 && current_grid[k+m-1] == ALIVE) neighbours++;
+            if(n_j[7] >= 0 && current_grid[k-1] == ALIVE) neighbours++;
+        }
+
+
+        if(current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)){
+            next_grid[k] = ALIVE;  // Cell remains alive
+        } else if(current_grid[k] == DEAD && neighbours == 3){
+            next_grid[k] = ALIVE;  // Cell becomes alive
         } else {
-            next_grid[temp] = DEAD;  // Cell dies
+            next_grid[k] = DEAD;  // Cell dies
         }
     }
     // // Loop through each cell in the grid
