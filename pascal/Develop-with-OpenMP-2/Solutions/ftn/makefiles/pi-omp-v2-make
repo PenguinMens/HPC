@@ -1,0 +1,21 @@
+CC=cc
+F90=ftn
+PRGENV=${PE_ENV}
+CFLAGS=-g
+SOURCE=.
+
+ifeq ($(PRGENV),INTEL)
+	OMP_FLAG=-openmp
+else ifeq ($(PRGENV),GNU)
+	OMP_FLAG=-fopenmp
+else ifeq ($(PRGENV),CRAY)
+	OMP_FLAG=-homp
+endif 
+
+all: serial
+
+serial:
+	$(F90) $(CFLAGS) $(SOURCE)/pi-omp-v2.f90 -o pi-omp-v2 $(OMP_FLAG)
+clean:
+	rm -rf pi-omp-v2
+
