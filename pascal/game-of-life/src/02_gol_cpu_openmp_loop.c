@@ -67,11 +67,10 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                 }
 
 
-                if((current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3))){
+                if((current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)) ||  (current_grid[k] == DEAD && neighbours == 3)){
                         next_grid[k] = ALIVE;  // Cell remains alive
-                    } else if(current_grid[k] == DEAD && neighbours == 3){
-                        next_grid[k] = ALIVE;  // Cell becomes alive
-                    } else {
+                    }  else {
+
                         next_grid[k] = DEAD;  // Cell dies
                 }
             }
