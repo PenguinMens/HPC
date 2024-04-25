@@ -7,7 +7,7 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 make clean
-make COMPILER=CRAY PROFILER=ON cpu_serial_cc
+make COMPILER=CRAY PROFILER=ON cpu_openmp_loop_cc
 executable_name=$1
 someversionname=$2
 
@@ -37,4 +37,4 @@ ${executable_path} ${nxgrid} ${nygrid} ${nsteps} 0 -1 > ${log_file}
 
 # Move the stats file
 mv GOL-stats.txt texts/${basename}.txt
-gprof -lbp ./bin/01_gol_cpu_serial gmon.out > logs/${someversionname}/analysis.txt
+gprof -lbp ./bin/$1 gmon.out > logs/${someversionname}/analysis.txt
