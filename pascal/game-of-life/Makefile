@@ -134,10 +134,7 @@ OACCCXX = $(CXX)
 OCLC = $(CCGPU)
 OCLCXX = $(CXXGPU)
 
-VISUALFLAGS = 
-# here this flag may need to be updated with PNG location
-PNGDIR ?= /usr/include/libpng
-PNGLIB ?= -lpng
+
 
 
 COMMONFLAGS = $(OPTFLAGS) $(VISUALFLAGS)
@@ -251,9 +248,13 @@ gpu_openmp : bin/02_gol_gpu_openmp bin/02_gol_gpu_openmp_fort
 gpu_openacc : bin/02_gol_gpu_openacc bin/02_gol_gpu_openacc_fort 
 gpu_mono_hip : bin/02_gol_hip_monogpu 
 
+# here this flag may need to be updated with PNG location
+VISUALFLAGS = 
 ifeq ($(VISUALTYPE), PNG)
-	VISUALFLAGS += $(PNGLIB) -I$(PNGDIR)/include/ -L$(PNGDIR)/lib/ -DUSEPNG
+	VISUALFLAGS += $(PNGLIB) -I$(PNGDIR) -L/usr/lib/x86_64-linux-gnu -DUSEPNG
 endif
+PNGDIR ?= /usr/include
+PNGLIB ?= -lpng
 
 obj/common.o : src/common.h src/common.c
 	$(CC) $(COMMONFLAGS) $(CFLAGS) -c src/common.c -o obj/common.o
@@ -300,4 +301,3 @@ bin/02_gol_cpu_openmp_loop_fort : src/02_gol_cpu_openmp_loop_fort.f90 obj/common
 bin/02_gol_cpu_openmp_task_fort : src/02_gol_cpu_openmp_task_fort.f90 obj/common_fort.o
 	$(OMPFORT) $(OMP_FLAGS) $(COMMONFLAGS) $(FFLAGS) -c src/02_gol_cpu_openmp_task_fort.f90 -o obj/02_gol_cpu_openmp_task_fort.o
 	$(OMPFORT) $(OMP_FLAGS) $(COMMONFLAGS) $(FFLAGS) -o bin/02_gol_cpu_openmp_task_fort obj/02_gol_cpu_openmp_task_fort.o obj/common_fort.o
-

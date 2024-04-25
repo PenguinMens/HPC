@@ -1,0 +1,2 @@
+step 0 : Frac in state 0 = 0.599928,	Frac in state 1 = 0.400072,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 1 : Frac in state 0 = 0.149459,	Frac in state 1 = 0.850541,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
