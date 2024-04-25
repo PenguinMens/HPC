@@ -1,49 +1,97 @@
 #include "common.h"
 
 void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n, int m){
-    int neighbours;
-    int n_i[8], n_j[8];
-    for(int j = 0; j < m; j++){
-        for(int i = 0; i < n; i++){
-            // count the number of neighbours, clockwise around the current cell.
-            neighbours = 0;
-            n_i[0] = i - 1; n_j[0] = j - 1;
-            n_i[1] = i - 1; n_j[1] = j;
-            n_i[2] = i - 1; n_j[2] = j + 1;
-            n_i[3] = i;     n_j[3] = j + 1;
-            n_i[4] = i + 1; n_j[4] = j + 1;
-            n_i[5] = i + 1; n_j[5] = j;
-            n_i[6] = i + 1; n_j[6] = j - 1;
-            n_i[7] = i;     n_j[7] = j - 1;
+    int neighbours, i, j;  // Variable to store the number of live neighbors
+    int n_i[8], n_j[8];  // Arrays to store row and column indices of neighbors
+    
+    for(int k = 0; k < n*m; k++){
+        i = k/m;
+        j = k%m;
+        neighbours = 0;  // Reset the neighbor count for each cell
+            
+        // Define the row and column indices of the 8 neighboring cells
+        n_i[0] = i - 1; n_j[0] = j - 1;
+        n_i[1] = i - 1; n_j[1] = j;
+        n_i[2] = i - 1; n_j[2] = j + 1;
+        n_i[3] = i;     n_j[3] = j + 1;
+        n_i[4] = i + 1; n_j[4] = j + 1;
+        n_i[5] = i + 1; n_j[5] = j;
+        n_i[6] = i + 1; n_j[6] = j - 1;
+        n_i[7] = i;     n_j[7] = j - 1;
 
-            if(n_i[0] >= 0 && n_j[0] >= 0 && current_grid[n_i[0] * m + n_j[0]] == ALIVE) neighbours++;
-            if(n_i[1] >= 0 && current_grid[n_i[1] * m + n_j[1]] == ALIVE) neighbours++;
-            if(n_i[2] >= 0 && n_j[2] < m && current_grid[n_i[2] * m + n_j[2]] == ALIVE) neighbours++;
-            if(n_j[3] < m && current_grid[n_i[3] * m + n_j[3]] == ALIVE) neighbours++;
-            if(n_i[4] < n && n_j[4] < m && current_grid[n_i[4] * m + n_j[4]] == ALIVE) neighbours++;
-            if(n_i[5] < n && current_grid[n_i[5] * m + n_j[5]] == ALIVE) neighbours++;
-            if(n_i[6] < n && n_j[6] >= 0 && current_grid[n_i[6] * m + n_j[6]] == ALIVE) neighbours++;
-            if(n_j[7] >= 0 && current_grid[n_i[7] * m + n_j[7]] == ALIVE) neighbours++;
+        // Check each neighbor's status and count live neighbors
+        if(n_i[0] >= 0 && n_j[0] >= 0 && current_grid[n_i[0] * m + n_j[0]] == ALIVE) neighbours++;
+        if(n_i[1] >= 0 && current_grid[n_i[1] * m + n_j[1]] == ALIVE) neighbours++;
+        if(n_i[2] >= 0 && n_j[2] < m && current_grid[n_i[2] * m + n_j[2]] == ALIVE) neighbours++;
+        if(n_j[3] < m && current_grid[n_i[3] * m + n_j[3]] == ALIVE) neighbours++;
+        if(n_i[4] < n && n_j[4] < m && current_grid[n_i[4] * m + n_j[4]] == ALIVE) neighbours++;
+        if(n_i[5] < n && current_grid[n_i[5] * m + n_j[5]] == ALIVE) neighbours++;
+        if(n_i[6] < n && n_j[6] >= 0 && current_grid[n_i[6] * m + n_j[6]] == ALIVE) neighbours++;
+        if(n_j[7] >= 0 && current_grid[n_i[7] * m + n_j[7]] == ALIVE) neighbours++;
 
-            if(current_grid[i*m + j] == ALIVE && (neighbours == 2 || neighbours == 3)){
-                next_grid[i*m + j] = ALIVE;
-            } else if(current_grid[i*m + j] == DEAD && neighbours == 3){
-                next_grid[i*m + j] = ALIVE;
-            }else{
-                next_grid[i*m + j] = DEAD;
-            }
+        
+        // Apply rules of the Game of Life to update the next state of the current cell
+        int temp = i*m + j;
+        if(current_grid[temp] == ALIVE && (neighbours == 2 || neighbours == 3)){
+            next_grid[temp] = ALIVE;  // Cell remains alive
+        } else if(current_grid[temp] == DEAD && neighbours == 3){
+            next_grid[temp] = ALIVE;  // Cell becomes alive
+        } else {
+            next_grid[temp] = DEAD;  // Cell dies
         }
     }
+    // // Loop through each cell in the grid
+    // for(int j = 0; j < m; j++){
+    //     for(int i = 0; i < n; i++){
+    //         // count the number of neighbours, clockwise around the current cell.
+    //         neighbours = 0;  // Reset the neighbor count for each cell
+            
+    //         // Define the row and column indices of the 8 neighboring cells
+    //         n_i[0] = i - 1; n_j[0] = j - 1;
+    //         n_i[1] = i - 1; n_j[1] = j;
+    //         n_i[2] = i - 1; n_j[2] = j + 1;
+    //         n_i[3] = i;     n_j[3] = j + 1;
+    //         n_i[4] = i + 1; n_j[4] = j + 1;
+    //         n_i[5] = i + 1; n_j[5] = j;
+    //         n_i[6] = i + 1; n_j[6] = j - 1;
+    //         n_i[7] = i;     n_j[7] = j - 1;
+
+    //         // Check each neighbor's status and count live neighbors
+    //         if(n_i[0] >= 0 && n_j[0] >= 0 && current_grid[n_i[0] * m + n_j[0]] == ALIVE) neighbours++;
+    //         if(n_i[1] >= 0 && current_grid[n_i[1] * m + n_j[1]] == ALIVE) neighbours++;
+    //         if(n_i[2] >= 0 && n_j[2] < m && current_grid[n_i[2] * m + n_j[2]] == ALIVE) neighbours++;
+    //         if(n_j[3] < m && current_grid[n_i[3] * m + n_j[3]] == ALIVE) neighbours++;
+    //         if(n_i[4] < n && n_j[4] < m && current_grid[n_i[4] * m + n_j[4]] == ALIVE) neighbours++;
+    //         if(n_i[5] < n && current_grid[n_i[5] * m + n_j[5]] == ALIVE) neighbours++;
+    //         if(n_i[6] < n && n_j[6] >= 0 && current_grid[n_i[6] * m + n_j[6]] == ALIVE) neighbours++;
+    //         if(n_j[7] >= 0 && current_grid[n_i[7] * m + n_j[7]] == ALIVE) neighbours++;
+
+    //         // Apply rules of the Game of Life to update the next state of the current cell
+    //         if(current_grid[i*m + j] == ALIVE && (neighbours == 2 || neighbours == 3)){
+    //             next_grid[i*m + j] = ALIVE;  // Cell remains alive
+    //         } else if(current_grid[i*m + j] == DEAD && neighbours == 3){
+    //             next_grid[i*m + j] = ALIVE;  // Cell becomes alive
+    //         } else {
+    //             next_grid[i*m + j] = DEAD;  // Cell dies
+    //         }
+    //     }
+    // }
 }
 
 void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     unsigned long long num_in_state[NUMSTATES];
-    int m = opt->m, n = opt->n;
+    int m = opt->m, n = opt->n, i, j;
     for(int i = 0; i < NUMSTATES; i++) num_in_state[i] = 0;
-    for(int j = 0; j < m; j++){
-        for(int i = 0; i < n; i++){
-            num_in_state[current_grid[i*m + j]]++;
-        }
+    // for(int j = 0; j < m; j++){
+    //     for(int i = 0; i < n; i++){
+    //         num_in_state[current_grid[i*m + j]]++;
+    //     }
+    // }
+    for(int k = 0; k < n*m; k++){
+        i = k/m;
+        j = k%m;
+        num_in_state[current_grid[i*m+j]]++;
+ 
     }
     double frac, ntot = opt->m*opt->n;
     FILE *fptr;

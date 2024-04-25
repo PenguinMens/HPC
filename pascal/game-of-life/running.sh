@@ -1,25 +1,40 @@
 #!/bin/bash
 #
 
-# Check if the executable path is provided as a parameter
-if [ $# -ne 1 ]; then
-    echo "Usage: $0 <executable_path>"
+# Check if the executable path and version name are provided as parameters
+if [ $# -ne 2 ]; then
+    echo "Usage: $0 <executable_name> <version_name>"
     exit 1
 fi
+make clean
+make COMPILER=GCC PROFILER=ON cpu_serial_cc
+executable_name=$1
+someversionname=$2
 
-executable_path=./bin/$1
+# Define the executable path
+executable_path=./bin/${executable_name}
 
-# lets set some variables for a run. Here numbers are examples only.
+# Set other variables
 nomp=2
 nxgrid=10000
 nygrid=10000
-nsteps=2
-echo executable_path=${executable_path} ${nxgrid} ${nygrid} ${nsteps}
-# set some meaningful name. Could be reference, latests, etc.
-someversionname=pre-serial
-# set a base name
-basename=GOL-$1-${someversionname}.nomp-${nomp}.ngrid-${nxgrid}x${nygrid}.${nsteps}
-export OMP_NUM_THREADS=${nomp}
-${executable_path} ${nxgrid} ${nygrid} ${nsteps} 0 -1 > logs/${basename}.log
+nsteps=3
 
+# Set base name
+basename=GOL-${executable_name}-${someversionname}.nomp-${nomp}.ngrid-${nxgrid}x${nygrid}.${nsteps}
+
+# Create a directory based on version name if it doesn't exist
+mkdir -p logs/${someversionname}
+
+# Set log file path
+log_file=logs/${someversionname}/${basename}.log
+
+# Export environment variable
+export OMP_NUM_THREADS=${nomp}
+
+# Run the executable with provided parameters and redirect output to log file
+${executable_path} ${nxgrid} ${nygrid} ${nsteps} 0 -1 > ${log_file}
+
+# Move the stats file
 mv GOL-stats.txt texts/${basename}.txt
+gprof -lbp ./bin/01_gol_cpu_serial gmon.out > logs/${someversionname}/analysis.txt

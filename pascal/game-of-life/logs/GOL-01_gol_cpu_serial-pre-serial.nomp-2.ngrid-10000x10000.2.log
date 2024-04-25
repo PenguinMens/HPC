@@ -21,12 +21,12 @@ Memory Usage @ Function report_runtime_state @ 354
  
 ========================================================= 
 Memory Usage @ Function generate_IC @ 301 
- (VM, Peak VM, RSS, Peak RSS) = (784040, 784040, 392584, 392584) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (784040, 784040, 392580, 392580) kilobytes 
 ========================================================= 
  
 Game of Life, Step 0:
-Elapsed time 7.400887 s
+Elapsed time 7.476833 s
 Game of Life, Step 1:
-Elapsed time 5.574339 s
+Elapsed time 6.273564 s
 Finnished GOL
-Elapsed time 12.975238 s
+Elapsed time 13.750407 s

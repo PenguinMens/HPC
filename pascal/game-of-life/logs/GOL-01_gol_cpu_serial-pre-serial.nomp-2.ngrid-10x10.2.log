@@ -1,0 +1,256 @@
+========================================================= 
+GOL Running with following 
+========================================================= 
+Requesting grid size of (10,10), which requires 0.000000 GB 
+Number of steps 2 
+IC type 0 
+Visualization type 0 
+Neighbour rule type 0 
+Boundary rule type 0 
+========================================================= 
+ 
+========================================================= 
+Core binding report:
+ On node DESKTOP-1DDDBB6 : MPI Rank 0 :  Thread 0 :  Core affinity = 0-5 
+========================================================= 
+ 
+========================================================= 
+Memory Usage @ Function report_runtime_state @ 354 
+ (VM, Peak VM, RSS, Peak RSS) = (2784, 2784, 1084, 1084) kilobytes 
+========================================================= 
+ 
+========================================================= 
+Memory Usage @ Function generate_IC @ 301 
+ (VM, Peak VM, RSS, Peak RSS) = (2784, 2784, 1084, 1084) kilobytes 
+========================================================= 
+ 
+Game of Life
+Step 0:
+ *  *  *     *     *  *  *    
+ *     *  *  *     *     *    
+    *  *     *     *     *    
+          *  *  *  *  *     * 
+    *        *     *        * 
+       *  *  *  *  *  *  *  * 
+       *           *        * 
+    *  *  *     *     *  *  * 
+ *     *  *  *  *     *  *  * 
+    *  *  *           *  *    
+Game of Life, Step 0:
+current_grid[0] = 0
+current_grid[10] = 0
+current_grid[20] = 1
+current_grid[30] = 1
+current_grid[40] = 1
+current_grid[50] = 1
+current_grid[60] = 1
+current_grid[70] = 1
+current_grid[80] = 0
+current_grid[90] = 1
+current_grid[1] = 0
+current_grid[11] = 1
+current_grid[21] = 0
+current_grid[31] = 1
+current_grid[41] = 0
+current_grid[51] = 1
+current_grid[61] = 1
+current_grid[71] = 0
+current_grid[81] = 1
+current_grid[91] = 0
+current_grid[2] = 0
+current_grid[12] = 0
+current_grid[22] = 0
+current_grid[32] = 1
+current_grid[42] = 1
+current_grid[52] = 0
+current_grid[62] = 0
+current_grid[72] = 0
+current_grid[82] = 0
+current_grid[92] = 0
+current_grid[3] = 1
+current_grid[13] = 0
+current_grid[23] = 1
+current_grid[33] = 0
+current_grid[43] = 1
+current_grid[53] = 0
+current_grid[63] = 1
+current_grid[73] = 0
+current_grid[83] = 0
+current_grid[93] = 0
+current_grid[4] = 0
+current_grid[14] = 0
+current_grid[24] = 0
+current_grid[34] = 0
+current_grid[44] = 0
+current_grid[54] = 0
+current_grid[64] = 1
+current_grid[74] = 1
+current_grid[84] = 0
+current_grid[94] = 1
+current_grid[5] = 1
+current_grid[15] = 1
+current_grid[25] = 1
+current_grid[35] = 0
+current_grid[45] = 1
+current_grid[55] = 0
+current_grid[65] = 1
+current_grid[75] = 0
+current_grid[85] = 0
+current_grid[95] = 1
+current_grid[6] = 0
+current_grid[16] = 0
+current_grid[26] = 0
+current_grid[36] = 0
+current_grid[46] = 0
+current_grid[56] = 0
+current_grid[66] = 0
+current_grid[76] = 1
+current_grid[86] = 1
+current_grid[96] = 1
+current_grid[7] = 0
+current_grid[17] = 1
+current_grid[27] = 1
+current_grid[37] = 0
+current_grid[47] = 1
+current_grid[57] = 0
+current_grid[67] = 1
+current_grid[77] = 0
+current_grid[87] = 0
+current_grid[97] = 0
+current_grid[8] = 0
+current_grid[18] = 0
+current_grid[28] = 0
+current_grid[38] = 1
+current_grid[48] = 1
+current_grid[58] = 0
+current_grid[68] = 1
+current_grid[78] = 0
+current_grid[88] = 0
+current_grid[98] = 0
+current_grid[9] = 1
+current_grid[19] = 1
+current_grid[29] = 1
+current_grid[39] = 0
+current_grid[49] = 0
+current_grid[59] = 0
+current_grid[69] = 0
+current_grid[79] = 0
+current_grid[89] = 0
+current_grid[99] = 1
+Elapsed time 0.000077 s
+Game of Life
+Step 1:
+ *     *     *     *     *    
+ *           *     *     *  * 
+    *                    *  * 
+    *                       * 
+                            * 
+    *  *     *              * 
+                              
+                *             
+ *              *             
+    *              *  *     * 
+Game of Life, Step 1:
+current_grid[0] = 0
+current_grid[10] = 0
+current_grid[20] = 1
+current_grid[30] = 1
+current_grid[40] = 1
+current_grid[50] = 1
+current_grid[60] = 1
+current_grid[70] = 1
+current_grid[80] = 0
+current_grid[90] = 1
+current_grid[1] = 1
+current_grid[11] = 1
+current_grid[21] = 0
+current_grid[31] = 0
+current_grid[41] = 1
+current_grid[51] = 0
+current_grid[61] = 1
+current_grid[71] = 1
+current_grid[81] = 1
+current_grid[91] = 0
+current_grid[2] = 0
+current_grid[12] = 1
+current_grid[22] = 1
+current_grid[32] = 1
+current_grid[42] = 1
+current_grid[52] = 0
+current_grid[62] = 1
+current_grid[72] = 1
+current_grid[82] = 1
+current_grid[92] = 1
+current_grid[3] = 1
+current_grid[13] = 1
+current_grid[23] = 1
+current_grid[33] = 1
+current_grid[43] = 1
+current_grid[53] = 1
+current_grid[63] = 1
+current_grid[73] = 1
+current_grid[83] = 1
+current_grid[93] = 1
+current_grid[4] = 0
+current_grid[14] = 0
+current_grid[24] = 1
+current_grid[34] = 1
+current_grid[44] = 1
+current_grid[54] = 0
+current_grid[64] = 1
+current_grid[74] = 1
+current_grid[84] = 1
+current_grid[94] = 1
+current_grid[5] = 1
+current_grid[15] = 1
+current_grid[25] = 1
+current_grid[35] = 1
+current_grid[45] = 1
+current_grid[55] = 1
+current_grid[65] = 1
+current_grid[75] = 0
+current_grid[85] = 0
+current_grid[95] = 1
+current_grid[6] = 0
+current_grid[16] = 0
+current_grid[26] = 1
+current_grid[36] = 1
+current_grid[46] = 1
+current_grid[56] = 1
+current_grid[66] = 1
+current_grid[76] = 1
+current_grid[86] = 1
+current_grid[96] = 0
+current_grid[7] = 1
+current_grid[17] = 1
+current_grid[27] = 1
+current_grid[37] = 1
+current_grid[47] = 1
+current_grid[57] = 1
+current_grid[67] = 1
+current_grid[77] = 1
+current_grid[87] = 1
+current_grid[97] = 0
+current_grid[8] = 0
+current_grid[18] = 0
+current_grid[28] = 0
+current_grid[38] = 1
+current_grid[48] = 1
+current_grid[58] = 1
+current_grid[68] = 1
+current_grid[78] = 1
+current_grid[88] = 1
+current_grid[98] = 1
+current_grid[9] = 1
+current_grid[19] = 0
+current_grid[29] = 0
+current_grid[39] = 0
+current_grid[49] = 0
+current_grid[59] = 0
+current_grid[69] = 1
+current_grid[79] = 1
+current_grid[89] = 1
+current_grid[99] = 0
+Elapsed time 0.000027 s
+Finnished GOL
+Elapsed time 0.000106 s
