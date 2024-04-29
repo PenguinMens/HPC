@@ -11,3 +11,4 @@ assignment/*log
 assignment/*pyg
 *.mod
 *.mp4
+gmon.out

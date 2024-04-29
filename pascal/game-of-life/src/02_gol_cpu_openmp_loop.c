@@ -56,14 +56,6 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                         if(left >= 0 && current_grid[k-1] == ALIVE) neighbours++;
                     }
 
-                        // if(i-1 >= 0 && j - 1 >= 0 && current_grid[k-m-1] == ALIVE) neighbours++;
-                        // if(i-1 >= 0 && current_grid[k-m] == ALIVE) neighbours++;
-                        // if(i-1 >= 0 && j + 1 < m && current_grid[k-m+1] == ALIVE) neighbours++;
-                        // if(j + 1 < m && current_grid[k+1] == ALIVE) neighbours++;
-                        // if(i + 1 < n && j + 1< m && current_grid[k+m+1] == ALIVE) neighbours++;
-                        // if(i + 1 < n && current_grid[k+m] == ALIVE) neighbours++;
-                        // if(i + 1 < n &&  j - 1>= 0 && current_grid[k+m-1] == ALIVE) neighbours++;
-                        // if(j - 1 >= 0 && current_grid[k-1] == ALIVE) neighbours++;
                 }
 
 

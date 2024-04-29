@@ -7,7 +7,7 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 make clean
-make COMPILER=CRAY PROFILER=ON cpu_openmp_loop_cc
+make COMPILER=CRAY PROFILER=ON cpu_serial_cc
 executable_name=$1
 someversionname=$2
 
@@ -18,7 +18,7 @@ executable_path=./bin/${executable_name}
 nomp=2
 nxgrid=10000
 nygrid=10000
-nsteps=7
+nsteps=10
 
 # Set base name
 basename=GOL-${executable_name}-${someversionname}.nomp-${nomp}.ngrid-${nxgrid}x${nygrid}.${nsteps}
