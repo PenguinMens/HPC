@@ -18,7 +18,7 @@ executable_path=./bin/${executable_name}
 nomp=2
 nxgrid=10000
 nygrid=10000
-nsteps=3
+nsteps=7
 
 # Set base name
 basename=GOL-${executable_name}-${someversionname}.nomp-${nomp}.ngrid-${nxgrid}x${nygrid}.${nsteps}

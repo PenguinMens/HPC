@@ -1,0 +1,7 @@
+step 0 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 1 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 2 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 3 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 4 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 5 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
+step 6 : Frac in state 0 = 0.000000,	Frac in state 1 = 0.000000,	Frac in state 2 = 0.000000,	Frac in state 3 = 0.000000,	 
