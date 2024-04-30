@@ -3,89 +3,94 @@
 void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n, int m){
     int neighbours;
 
-    int i,j;
+
     // Parallelize the outer loop using OpenMP
-    #pragma omp parallel for private(neighbours) shared(i,j)
-    
-        // for(int k = 0; k < n*m; k++){
-        for(int i = 0; i < n; i++){
-            for(int j = 0; j < m; j++){
-                int k = i*m + j;
+    #pragma omp parallel for default(none) private(neighbours) shared(n,m,current_grid,next_grid) collapse(2)
+    // for(int k = 0; k < n*m; k++){
+    //     int i = k/m;
+    //     int j = k%m;
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < m; j++){
+            int k = i*m + j;
+            neighbours = 0;  // Reset the neighbor count for each cell
+            
+            // we dont need boundry checking if its in the inner grid
+            if(i > 0 && j > 0 && i < n-1 && j < m-1){
+                // we can directly use k and m to get neighbours
+                if(current_grid[k-m-1] == ALIVE) neighbours++;
+                if(current_grid[k-m] == ALIVE) neighbours++;
+                if(current_grid[k-1] == ALIVE) neighbours++;
+                
+                if(current_grid[k+m-1] == ALIVE) neighbours++;
+                if(current_grid[k+m] == ALIVE) neighbours++;
+
+                if(current_grid[k+1] == ALIVE) neighbours++;
+                if(current_grid[k+m+1] == ALIVE) neighbours++;
+                if(current_grid[k-m+1] == ALIVE) neighbours++;
+            }
+            else{
+                // define direction relative to the current cell
+                // diagonals are a combination of 2 directions
                 int left = j - 1;
                 int right = j  + 1;
                 int up = i - 1;
                 int down = i + 1;
-
-                neighbours = 0;  // Reset the neighbor count for each cell
-                    
-                // Define the row and column indices of the 8 neighboring cells
-
-
-
-                
-                // Apply rules of the Game of Life to update the next state of the current cell
-                if(i > 0 && j > 0 && i < n-1 && j < m-1){
-
-                    if(current_grid[k-m-1] == ALIVE) neighbours++;
+                // Check each neighbor's status and count live neighbors
+                // having this gernal check actaully decrease the number of conditions from 12 to 8
+                if(up >= 0){
+                    // checks upper boundry
+                    if(left >= 0 && current_grid[k-m-1] == ALIVE) neighbours++;
                     if(current_grid[k-m] == ALIVE) neighbours++;
-                    if(current_grid[k-m+1] == ALIVE) neighbours++;
-                    if(current_grid[k-1] == ALIVE) neighbours++;
-                    if(current_grid[k+1] == ALIVE) neighbours++;
-                    if(current_grid[k+m-1] == ALIVE) neighbours++;
+                    if(right < m && current_grid[k-m+1] == ALIVE) neighbours++;
+                }
+                if(down < n){   // checks lower bounder
+                    if(right< m && current_grid[k+m+1] == ALIVE) neighbours++;
                     if(current_grid[k+m] == ALIVE) neighbours++;
-                    if(current_grid[k+m+1] == ALIVE) neighbours++;
-
-                }
-                else{
-                    // Check each neighbor's status and count live neighbors
-                    if(up >= 0)
-                    {
-                        if(left >= 0 && current_grid[k-m-1] == ALIVE) neighbours++;
-                        if(current_grid[k-m] == ALIVE) neighbours++;
-                        if(right < m && current_grid[k-m+1] == ALIVE) neighbours++;
-                    }
-                    else if(down < n)
-                    {
-                        if(right< m && current_grid[k+m+1] == ALIVE) neighbours++;
-                        if(current_grid[k+m] == ALIVE) neighbours++;
-                        if(left>= 0 && current_grid[k+m-1] == ALIVE) neighbours++;
-                    }
-                    else
-                    {
-                        if(right < m && current_grid[k+1] == ALIVE) neighbours++;
-                        if(left >= 0 && current_grid[k-1] == ALIVE) neighbours++;
-                    }
-
+                    if(left>= 0 && current_grid[k+m-1] == ALIVE) neighbours++;
                 }
 
-
-                if((current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)) ||  (current_grid[k] == DEAD && neighbours == 3)){
-                        next_grid[k] = ALIVE;  // Cell remains alive
-                    }  else if (current_grid[k] == ALIVE ) {
-
-                        next_grid[k] = DEAD;  // Cell dies
-                }
+                if(right < m && current_grid[k+1] == ALIVE) neighbours++;
+                if(left >= 0 && current_grid[k-1] == ALIVE) neighbours++;
             }
+
+            // store variable because memmory retrieval could be costly
+            int state;
+            #pragma omp atomic read
+                state = current_grid[k];
+            //dont know if doing this reduces branching but it feels liek ti does
+            if(state == ALIVE && (neighbours == 2 || neighbours == 3)){
+                #pragma omp atomic write
+                    next_grid[k] = ALIVE;  // Cell remains alive
+                
+            } else if(state == DEAD && neighbours == 3){
+                #pragma omp atomic write
+                    next_grid[k] = ALIVE;  // Cell remains alive
+   
+            } else {
+                #pragma omp atomic write
+                    next_grid[k] = DEAD;  // Cell dies
+              
+            }
+
         }
-    
+    }
 }
 void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     unsigned long long num_in_state[NUMSTATES];
-    int m = opt->m, n = opt->n, i, j;
+    int m = opt->m, n = opt->n,k;
     for(int i = 0; i < NUMSTATES; i++) num_in_state[i] = 0;
 
-    #pragma omp parallel for default(none) private(num_in_state,) shared( current_grid, n, m)
-        for(int j = 0; j < m; j++){
-            for(int i = 0; i < n; i++){
-                num_in_state[current_grid[i*m + j]]++;
-            }
-        }
+    // #pragma omp parallel for default(none) private(num_in_state,) shared( current_grid, n, m)
+    //     for(int j = 0; j < m; j++){
+    //         for(int i = 0; i < n; i++){
+    //             num_in_state[current_grid[i*m + j]]++;
+    //         }
+    //     }
 
-    // for(int k = 0; k < n*m; k++){
-    //     i = k/m;
-    //     j = k%m;
-    //     num_in_state[current_grid[i*m+j]]++;
-    // }
+    #pragma omp parallel for default(none) private(num_in_state,k) shared( current_grid, n, m)
+        for(k = 0; k < n*m; k++){
+            num_in_state[current_grid[k]]++;
+        }
     double frac, ntot = opt->m*opt->n;
     FILE *fptr;
     if (step == 0) {

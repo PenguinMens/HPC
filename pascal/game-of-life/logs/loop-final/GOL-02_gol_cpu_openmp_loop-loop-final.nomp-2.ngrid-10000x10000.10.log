@@ -1,11 +1,11 @@
 ========================================================= 
 GOL Running with following 
 ========================================================= 
-Requesting grid size of (100,100), which requires 0.000037 GB 
-Number of steps 5 
+Requesting grid size of (10000,10000), which requires 0.372529 GB 
+Number of steps 10 
 IC type 0 
 Visualization type -1 
-Neighbour rule type 0 
+Neighbour rule type 1 
 Boundary rule type 0 
 ========================================================= 
  
@@ -16,23 +16,33 @@ Core binding report:
  
 ========================================================= 
 Memory Usage @ Function report_runtime_state @ 354 
- (VM, Peak VM, RSS, Peak RSS) = (2784, 2784, 1092, 1092) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1116, 1116) kilobytes 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function generate_IC @ 301 
- (VM, Peak VM, RSS, Peak RSS) = (2784, 2784, 1092, 1092) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (784336, 784336, 392832, 392832) kilobytes 
 ========================================================= 
  
 Game of Life, Step 0:
-Elapsed time 0.000188 s
+Elapsed time 0.425257 s
 Game of Life, Step 1:
-Elapsed time 0.000106 s
+Elapsed time 0.372351 s
 Game of Life, Step 2:
-Elapsed time 0.000101 s
+Elapsed time 0.287787 s
 Game of Life, Step 3:
-Elapsed time 0.000101 s
+Elapsed time 0.326304 s
 Game of Life, Step 4:
-Elapsed time 0.000099 s
+Elapsed time 0.268193 s
+Game of Life, Step 5:
+Elapsed time 0.269818 s
+Game of Life, Step 6:
+Elapsed time 0.241721 s
+Game of Life, Step 7:
+Elapsed time 0.244057 s
+Game of Life, Step 8:
+Elapsed time 0.235141 s
+Game of Life, Step 9:
+Elapsed time 0.239520 s
 Finnished GOL
-Elapsed time 0.000601 s
+Elapsed time 2.910207 s

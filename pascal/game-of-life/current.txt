@@ -1,0 +1,168 @@
+========================================================= 
+GOL Running with following 
+========================================================= 
+Requesting grid size of (10,10), which requires 0.000000 GB 
+Number of steps 10 
+IC type 0 
+Visualization type 0 
+Neighbour rule type 1 
+Boundary rule type 0 
+========================================================= 
+ 
+========================================================= 
+Core binding report:
+ On node DESKTOP-1DDDBB6 : MPI Rank 0 :  Thread 0 :  Core affinity = 0-5 
+========================================================= 
+ 
+========================================================= 
+Memory Usage @ Function report_runtime_state @ 354 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1144, 1144) kilobytes 
+========================================================= 
+ 
+========================================================= 
+Memory Usage @ Function generate_IC @ 301 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1144, 1144) kilobytes 
+========================================================= 
+ 
+Game of Life
+Step 0:
+ *  *  *     *     *  *  *    
+ *     *  *  *     *     *    
+    *  *     *     *     *    
+          *  *  *  *  *     * 
+    *        *     *        * 
+       *  *  *  *  *  *  *  * 
+       *           *        * 
+    *  *  *     *     *  *  * 
+ *     *  *  *  *     *  *  * 
+    *  *  *           *  *    
+Game of Life, Step 0:
+Elapsed time 0.001133 s
+Game of Life
+Step 1:
+ *     *     *     *     *    
+ *           *     *     *  * 
+    *                    *  * 
+    *                       * 
+                            * 
+    *  *     *              * 
+                              
+                *             
+ *              *             
+    *              *  *     * 
+Game of Life, Step 1:
+Elapsed time 0.000667 s
+Game of Life
+Step 2:
+    *     *              *  * 
+ *        *                   
+ *  *                 *       
+                            * 
+    *  *                 *  * 
+                              
+                              
+                              
+                *             
+                   *          
+Game of Life, Step 2:
+Elapsed time 0.000631 s
+Game of Life
+Step 3:
+       *                      
+ *                       *    
+ *  *                         
+ *     *                    * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 3:
+Elapsed time 0.000645 s
+Game of Life
+Step 4:
+                              
+ *                            
+ *                            
+ *                       *  * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 4:
+Elapsed time 0.000619 s
+Game of Life
+Step 5:
+                              
+                              
+ *  *                         
+                         *  * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 5:
+Elapsed time 0.000627 s
+Game of Life
+Step 6:
+                              
+                              
+                              
+                         *  * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 6:
+Elapsed time 0.000542 s
+Game of Life
+Step 7:
+                              
+                              
+                              
+                         *  * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 7:
+Elapsed time 0.000622 s
+Game of Life
+Step 8:
+                              
+                              
+                              
+                         *  * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 8:
+Elapsed time 0.000679 s
+Game of Life
+Step 9:
+                              
+                              
+                              
+                         *  * 
+                         *  * 
+                              
+                              
+                              
+                              
+                              
+Game of Life, Step 9:
+Elapsed time 0.000638 s
+Finnished GOL
+Elapsed time 0.006822 s

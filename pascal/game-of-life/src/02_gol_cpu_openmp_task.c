@@ -1,5 +1,5 @@
 #include "common.h"
-
+int itteration = 0;
 void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n, int m){
     int neighbours, i, j;  // Variable to store the number of live neighbors
     int n_i[8], n_j[8];  // Arrays to store row and column indices of neighbors
@@ -46,7 +46,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
             if(n_j[7] >= 0 && current_grid[k-1] == ALIVE) neighbours++;
         }
 
-
+        printf("iteration %d at %d neighbours: %d\n",itteration,k, neighbours);
         if(current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)){
             next_grid[k] = ALIVE;  // Cell remains alive
         } else if(current_grid[k] == DEAD && neighbours == 3){
@@ -118,6 +118,7 @@ int main(int argc, char **argv)
         grid = updated_grid;
         updated_grid = tmp;
         current_step++;
+         itteration = current_step;
         get_elapsed_time(steptime);
     }
     printf("Finnished GOL\n");
