@@ -20,11 +20,12 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                 if(current_grid[k-m-1] == ALIVE) neighbours++;
                 if(current_grid[k-m] == ALIVE) neighbours++;
                 if(current_grid[k-1] == ALIVE) neighbours++;
-                
+
                 if(current_grid[k+m-1] == ALIVE) neighbours++;
-                if(current_grid[k+m] == ALIVE) neighbours++;
+
 
                 if(current_grid[k+1] == ALIVE) neighbours++;
+                if(current_grid[k+m] == ALIVE) neighbours++;
                 if(current_grid[k+m+1] == ALIVE) neighbours++;
                 if(current_grid[k-m+1] == ALIVE) neighbours++;
             }
@@ -77,7 +78,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
 }
 void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     unsigned long long num_in_state[NUMSTATES];
-    int m = opt->m, n = opt->n,k;
+    int m = opt->m, n = opt->n;
     for(int i = 0; i < NUMSTATES; i++) num_in_state[i] = 0;
 
     // #pragma omp parallel for default(none) private(num_in_state,) shared( current_grid, n, m)
@@ -87,8 +88,8 @@ void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     //         }
     //     }
 
-    #pragma omp parallel for default(none) private(num_in_state,k) shared( current_grid, n, m)
-        for(k = 0; k < n*m; k++){
+    #pragma omp parallel for default(none)  shared( current_grid, n, m)  reduction(+:num_in_state)
+        for(int k = 0; k < n*m; k++){
             num_in_state[current_grid[k]]++;
         }
     double frac, ntot = opt->m*opt->n;

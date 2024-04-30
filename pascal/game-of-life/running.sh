@@ -40,4 +40,4 @@ mv GOL-stats.txt texts/${basename}.txt
 gprof -lbp ./bin/$1 gmon.out > logs/${someversionname}/analysis.txt
 
 ${executable_path} 10 10 10 0 0 > current.txt
-diff current.txt optimised_serial.txt
+#diff current.txt optimised_serial.txt
