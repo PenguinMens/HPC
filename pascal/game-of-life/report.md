@@ -105,5 +105,46 @@ This change also fixed line 15 from being an issue as the profiler is now saying
 next_grid[k] = ALIVE;  // Cell remains alive
 if(current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)){
 
-              
+one fix is to store the current_grid in a variable so it doesnt have to look at it twice if the first if fails. Doing this change actually consistently decrease the time by 0.3 seconds so it is worthwhile. Howerver the profiler is still saying the same 3 lines are causing the biggest bottle neck. 
+changing some of these lines to use atomic could reduce the time furthur as they are simple one line instructions. Doing this change however did not really decrease the time nor did it increase it. However the profiler is happier with this change as it is now saying 
+next_grid[k] = DEAD;  // Cell dies
+is causing the biggest bottleneck. 
+Not much can be done about this as it is where the program will be spending most of it's time as it the default action. There were attempts to add an if statement here to only kill the cell if its alive, however adding this if statemnt was more costly than just rewriting the cell. 
+ 12.75      0.51     0.51                             game_of_life._omp_fn.0 (02_gol_cpu_openmp_loop.c:70 @ 175c)
+ 10.50      0.93     0.42                             game_of_life._omp_fn.0 (02_gol_cpu_openmp_loop.c:62 @ 1829)
+  9.75      1.32     0.39                             game_of_life._omp_fn.0 (02_gol_cpu_openmp_loop.c:27 @ 17fd)
+  
+ 14.63      0.97     0.97                             game_of_life_stats._omp_fn.0 (02_gol_cpu_openmp_loop.c:93 @ 1ab8)
+ 12.37      1.79     0.82                             game_of_life._omp_fn.0 (02_gol_cpu_openmp_loop.c:72 @ 179c)
+
+finally the optiimsed loop code is seeing that the main bottle necks is the stats and setting the cell to dead. THe reason stats is taking up so much time is because reduction is a costly function. So it is safe to say that this code is essentailly fully optimsed where the only meaningful speedup gains are through increasing threads and hardware. 
+# task
+
+Starting task paralelism we first look at the profiler to identify the bottlenecks
+ 22.94      2.12     2.12                             game_of_life (02_gol_cpu_openmp_task.c:14 @ 16af)
+ 16.76      3.66     1.54                             game_of_life (02_gol_cpu_openmp_task.c:9 @ 16a7)
+ 14.64      5.01     1.35                             game_of_life_stats (02_gol_cpu_openmp_task.c:72 @ 1915)
+
+if(i > 0 && j > 0 && i < n-1 && j < m-1){
+i = k/m;
+for(int k = 0; k < n*m; k++){
+similar to loop optimisation we will get rid of the division by going back to a double for loop. 
+The other changes are directly related to the paralelisation probelm we need to optimise these using tasks
+
+the task changes loop like the following 
+#pragma omp parallel  
+#pragma omp single
+#pragma omp taskloop  default(none) shared(n,m,current_grid,next_grid)
+    for(int i = 0; i < m; i++){
+        for(int j = 0; j < m; j++){
+
+
+#pragma omp parallel  default(none) shared(current_grid, n, m,num_in_state)
+#pragma omp single    
+#pragma omp taskloop reduction (+:num_in_state)
+for(int k = 0; k < n*m; k++){
+
+doing these changes fixed the bottle neck and now the bottle necks are the following
+ 28.32      1.58     1.58                             game_of_life_stats._omp_fn.1 (02_gol_cpu_openmp_task.c:83 @ 1ad0)
+  7.80      2.02     0.43                             game_of_life._omp_fn.1 (02_gol_cpu_openmp_task.c:41 @ 1820)
 

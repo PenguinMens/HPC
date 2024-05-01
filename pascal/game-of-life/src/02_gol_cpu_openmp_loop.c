@@ -9,9 +9,11 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     // for(int k = 0; k < n*m; k++){
     //     int i = k/m;
     //     int j = k%m;
-    for(int i = 0; i < n; i++){
+    for(int i = 0; i < m; i++){
         for(int j = 0; j < m; j++){
+
             int k = i*m + j;
+            
             neighbours = 0;  // Reset the neighbor count for each cell
             
             // we dont need boundry checking if its in the inner grid
@@ -20,10 +22,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                 if(current_grid[k-m-1] == ALIVE) neighbours++;
                 if(current_grid[k-m] == ALIVE) neighbours++;
                 if(current_grid[k-1] == ALIVE) neighbours++;
-
                 if(current_grid[k+m-1] == ALIVE) neighbours++;
-
-
                 if(current_grid[k+1] == ALIVE) neighbours++;
                 if(current_grid[k+m] == ALIVE) neighbours++;
                 if(current_grid[k+m+1] == ALIVE) neighbours++;

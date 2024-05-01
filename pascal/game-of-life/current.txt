@@ -16,12 +16,12 @@ Core binding report:
  
 ========================================================= 
 Memory Usage @ Function report_runtime_state @ 354 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1216, 1216) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1144, 1144) kilobytes 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function generate_IC @ 301 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1216, 1216) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1144, 1144) kilobytes 
 ========================================================= 
  
 Game of Life
@@ -37,7 +37,7 @@ Step 0:
  *     *  *  *  *     *  *  * 
     *  *  *           *  *    
 Game of Life, Step 0:
-Elapsed time 0.001092 s
+Elapsed time 0.001197 s
 Game of Life
 Step 1:
  *     *     *     *     *    
@@ -51,7 +51,7 @@ Step 1:
  *              *             
     *              *  *     * 
 Game of Life, Step 1:
-Elapsed time 0.000645 s
+Elapsed time 0.000846 s
 Game of Life
 Step 2:
     *     *              *  * 
@@ -65,7 +65,7 @@ Step 2:
                 *             
                    *          
 Game of Life, Step 2:
-Elapsed time 0.000517 s
+Elapsed time 0.000765 s
 Game of Life
 Step 3:
        *                      
@@ -79,7 +79,7 @@ Step 3:
                               
                               
 Game of Life, Step 3:
-Elapsed time 0.000659 s
+Elapsed time 0.000760 s
 Game of Life
 Step 4:
                               
@@ -93,7 +93,7 @@ Step 4:
                               
                               
 Game of Life, Step 4:
-Elapsed time 0.006350 s
+Elapsed time 0.000760 s
 Game of Life
 Step 5:
                               
@@ -107,7 +107,7 @@ Step 5:
                               
                               
 Game of Life, Step 5:
-Elapsed time 0.000577 s
+Elapsed time 0.000804 s
 Game of Life
 Step 6:
                               
@@ -121,7 +121,7 @@ Step 6:
                               
                               
 Game of Life, Step 6:
-Elapsed time 0.000546 s
+Elapsed time 0.000823 s
 Game of Life
 Step 7:
                               
@@ -135,7 +135,7 @@ Step 7:
                               
                               
 Game of Life, Step 7:
-Elapsed time 0.000606 s
+Elapsed time 0.000775 s
 Game of Life
 Step 8:
                               
@@ -149,7 +149,7 @@ Step 8:
                               
                               
 Game of Life, Step 8:
-Elapsed time 0.000709 s
+Elapsed time 0.000898 s
 Game of Life
 Step 9:
                               
@@ -163,6 +163,6 @@ Step 9:
                               
                               
 Game of Life, Step 9:
-Elapsed time 0.000616 s
+Elapsed time 0.000770 s
 Finnished GOL
-Elapsed time 0.012334 s
+Elapsed time 0.008411 s
