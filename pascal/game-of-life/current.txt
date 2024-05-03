@@ -11,17 +11,17 @@ Boundary rule type 0
  
 ========================================================= 
 Core binding report:
- On node DESKTOP-1DDDBB6 : MPI Rank 0 :  Thread 0 :  Core affinity = 0-5 
+ On node DESKTOP-CK6525M : MPI Rank 0 :  Thread 0 :  Core affinity = 0-7 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function report_runtime_state @ 354 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1120, 1120) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1144, 1144) kilobytes 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function generate_IC @ 301 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1120, 1120) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1144, 1144) kilobytes 
 ========================================================= 
  
 Game of Life
@@ -37,7 +37,7 @@ Step 0:
  *     *  *  *  *     *  *  * 
     *  *  *           *  *    
 Game of Life, Step 0:
-Elapsed time 0.000965 s
+Elapsed time 0.001717 s
 Game of Life
 Step 1:
  *     *     *     *     *    
@@ -51,7 +51,7 @@ Step 1:
  *              *             
     *              *  *     * 
 Game of Life, Step 1:
-Elapsed time 0.000624 s
+Elapsed time 0.001064 s
 Game of Life
 Step 2:
     *     *              *  * 
@@ -65,7 +65,7 @@ Step 2:
                 *             
                    *          
 Game of Life, Step 2:
-Elapsed time 0.000640 s
+Elapsed time 0.001153 s
 Game of Life
 Step 3:
        *                      
@@ -79,7 +79,7 @@ Step 3:
                               
                               
 Game of Life, Step 3:
-Elapsed time 0.000637 s
+Elapsed time 0.001129 s
 Game of Life
 Step 4:
                               
@@ -93,7 +93,7 @@ Step 4:
                               
                               
 Game of Life, Step 4:
-Elapsed time 0.000624 s
+Elapsed time 0.001001 s
 Game of Life
 Step 5:
                               
@@ -107,7 +107,7 @@ Step 5:
                               
                               
 Game of Life, Step 5:
-Elapsed time 0.000625 s
+Elapsed time 0.000926 s
 Game of Life
 Step 6:
                               
@@ -121,7 +121,7 @@ Step 6:
                               
                               
 Game of Life, Step 6:
-Elapsed time 0.000692 s
+Elapsed time 0.000938 s
 Game of Life
 Step 7:
                               
@@ -135,7 +135,7 @@ Step 7:
                               
                               
 Game of Life, Step 7:
-Elapsed time 0.000617 s
+Elapsed time 0.000968 s
 Game of Life
 Step 8:
                               
@@ -149,7 +149,7 @@ Step 8:
                               
                               
 Game of Life, Step 8:
-Elapsed time 0.000489 s
+Elapsed time 0.001029 s
 Game of Life
 Step 9:
                               
@@ -163,6 +163,6 @@ Step 9:
                               
                               
 Game of Life, Step 9:
-Elapsed time 0.000653 s
+Elapsed time 0.000869 s
 Finnished GOL
-Elapsed time 0.006584 s
+Elapsed time 0.010828 s

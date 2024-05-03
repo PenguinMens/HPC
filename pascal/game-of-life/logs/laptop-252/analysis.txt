@@ -1,0 +1,17 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00       11     0.00     0.00  get_elapsed_time (common.c:13 @ 1bf0)
+  0.00      0.00     0.00       11     0.00     0.00  init_time (common.c:7 @ 1ba0)
+  0.00      0.00     0.00       10     0.00     0.00  game_of_life_stats (02_gol_cpu_openmp_loop.c:80 @ 1a30)
+  0.00      0.00     0.00       10     0.00     0.00  visualise (common.c:214 @ 2360)
+  0.00      0.00     0.00        2     0.00     0.00  report_memory_usage (common.c:24 @ 1c90)
+  0.00      0.00     0.00        1     0.00     0.00  cpuset_to_cstr (common.c:124 @ 1e90)
+  0.00      0.00     0.00        1     0.00     0.00  generate_IC (common.c:298 @ 24b0)
+  0.00      0.00     0.00        1     0.00     0.00  getinput (common.c:359 @ 27a0)
+  0.00      0.00     0.00        1     0.00     0.00  report_core_binding (common.c:159 @ 2030)
+  0.00      0.00     0.00        1     0.00     0.00  report_runtime_state (common.c:308 @ 25e0)

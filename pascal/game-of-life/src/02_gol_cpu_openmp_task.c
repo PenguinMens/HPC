@@ -52,17 +52,18 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                         if(left >= 0 && current_grid[k-1] == ALIVE) neighbours++;
                     }
 
+
                     // store variable because memmory retrieval could be costly
-            
-                    
-                    
-                    if(current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)){
-                        next_grid[k] = ALIVE;  // Cell remains alive
-                    } else if(current_grid[k] == DEAD && neighbours == 3){
-                        next_grid[k] = ALIVE;  // Cell becomes alive
+                    int state;
+                    state = current_grid[k];
+                    //dont know if doing this reduces branching but it feels liek ti does
+                    if(state == ALIVE && (neighbours == 2 || neighbours == 3)){
+                            next_grid[k] = ALIVE;  // Cell remains alive            
+                    } else if(state == DEAD && neighbours == 3){
+                            next_grid[k] = ALIVE;  // Cell remains alive
                     } else {
-                        next_grid[k] = DEAD;  // Cell dies
-                    }                        
+                        next_grid[k] = DEAD;  // Cell dies 
+                    }               
                 }
             }
 }
@@ -72,7 +73,6 @@ void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     int m = opt->m, n = opt->n, i, j;
     for(int i = 0; i < NUMSTATES; i++) num_in_state[i] = 0;
 
-    //serial
     #pragma omp parallel  default(none) shared(current_grid, n, m,num_in_state)
     #pragma omp single    
     #pragma omp taskloop reduction (+:num_in_state) 

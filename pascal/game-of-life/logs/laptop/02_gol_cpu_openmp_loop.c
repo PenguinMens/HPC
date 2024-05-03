@@ -5,11 +5,10 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
 
 
     // Parallelize the outer loop using OpenMP
-        // for(int k = 0; k < n*m; k++){
+    #pragma omp parallel for default(none) private(neighbours) shared(n,m,current_grid,next_grid) collapse(2)
+    // for(int k = 0; k < n*m; k++){
     //     int i = k/m;
     //     int j = k%m;
-    #pragma omp parallel for default(none) private(neighbours) shared(n,m,current_grid,next_grid) collapse(2)
-
     for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
 
@@ -49,6 +48,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                     if(current_grid[k+m] == ALIVE) neighbours++;
                     if(left>= 0 && current_grid[k+m-1] == ALIVE) neighbours++;
                 }
+
                 if(right < m && current_grid[k+1] == ALIVE) neighbours++;
                 if(left >= 0 && current_grid[k-1] == ALIVE) neighbours++;
             }
@@ -56,7 +56,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
             // store variable because memmory retrieval could be costly
             int state;
    
-            state = current_grid[k];
+                state = current_grid[k];
             //dont know if doing this reduces branching but it feels liek ti does
             if(state == ALIVE && (neighbours == 2 || neighbours == 3)){
                     next_grid[k] = ALIVE;  // Cell remains alive            

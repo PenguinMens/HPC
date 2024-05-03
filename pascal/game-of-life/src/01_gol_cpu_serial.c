@@ -1,7 +1,6 @@
 #include "common.h"
 
 
-int itteration = 0;
 // void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n, int m){
 //     int neighbours, i, j;  // Variable to store the number of live neighbors
 //     int n_i[8], n_j[8];  // Arrays to store row and column indices of neighbors
@@ -50,12 +49,10 @@ int itteration = 0;
 void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n, int m){
     int neighbours, i, j; 
     // get rid of the double forloops and use a single for loop
-    for(int k = 0; k < n*m; k++){
-        
+    for(int k = 0; k < n*m; k++){  
         i = k/m;
         j = k%m;
         neighbours = 0;  // Reset the neighbor count for each cell
-        
         // we dont need boundry checking if its in the inner grid
         if(i > 0 && j > 0 && i < n-1 && j < m-1){
             // we can directly use k and m to get neighbours
@@ -67,7 +64,6 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
             if(current_grid[k+m-1] == ALIVE) neighbours++;
             if(current_grid[k+m] == ALIVE) neighbours++;
             if(current_grid[k+m+1] == ALIVE) neighbours++;
-
         }
         else{
             // define direction relative to the current cell
@@ -89,25 +85,23 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
                 if(current_grid[k+m] == ALIVE) neighbours++;
                 if(left>= 0 && current_grid[k+m-1] == ALIVE) neighbours++;
             }
-
             if(right < m && current_grid[k+1] == ALIVE) neighbours++;
             if(left >= 0 && current_grid[k-1] == ALIVE) neighbours++;
         }
 
-        // store variable because memmory retrieval could be costly
- 
-        
 
-        
-        if(current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)){
-            next_grid[k] = ALIVE;  // Cell remains alive
-        } else if(current_grid[k] == DEAD && neighbours == 3){
-            next_grid[k] = ALIVE;  // Cell becomes alive
-        } else {
-            next_grid[k] = DEAD;  // Cell dies
-        }
-    }
-    
+            // store variable because memmory retrieval could be costly
+            int state;
+            state = current_grid[k];
+            //dont know if doing this reduces branching but it feels liek ti does
+            if(state == ALIVE && (neighbours == 2 || neighbours == 3)){
+                    next_grid[k] = ALIVE;  // Cell remains alive            
+            } else if(state == DEAD && neighbours == 3){
+                    next_grid[k] = ALIVE;  // Cell remains alive
+            } else {
+                 next_grid[k] = DEAD;  // Cell dies 
+            }
+    }   
 }
 
 void game_of_life_stats(struct Options *opt, int step, int *current_grid){
@@ -176,7 +170,7 @@ int main(int argc, char **argv)
         grid = updated_grid;
         updated_grid = tmp;
         current_step++;
-        itteration = current_step;
+ 
         get_elapsed_time(steptime);
     }
     printf("Finnished GOL\n");

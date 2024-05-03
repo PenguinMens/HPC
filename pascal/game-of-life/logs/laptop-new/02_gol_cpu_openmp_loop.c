@@ -9,9 +9,8 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     //     int i = k/m;
     //     int j = k%m;
     #pragma omp parallel for default(none) private(neighbours) shared(n,m,current_grid,next_grid) collapse(2)
-
-    for(int i = 0; i < n; i++){
-        for(int j = 0; j < m; j++){
+    for(int j = 0; j < m; j++){
+        for(int i = 0; i < n; i++){
 
             int k = i*m + j;
             
@@ -60,7 +59,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
             //dont know if doing this reduces branching but it feels liek ti does
             if(state == ALIVE && (neighbours == 2 || neighbours == 3)){
                     next_grid[k] = ALIVE;  // Cell remains alive            
-            } else if(state == DEAD && neighbours == 3){
+            } else if   (state == DEAD && neighbours == 3){
                     next_grid[k] = ALIVE;  // Cell remains alive
             } else {
                  next_grid[k] = DEAD;  // Cell dies 
@@ -69,6 +68,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
         }
     }
 }
+
 void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     unsigned long long num_in_state[NUMSTATES];
     int m = opt->m, n = opt->n;
@@ -78,9 +78,14 @@ void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     //sharing grid n and m as all threads will need it
     // we do a reduction to add up all the states from all the threads
     #pragma omp parallel for default(none)  shared( current_grid, n, m)  reduction(+:num_in_state)
-        for(int k = 0; k < n*m; k++){
-            num_in_state[current_grid[k]]++;
+        for(int j = 0; j < m; j++){
+        for(int i = 0; i < n; i++){
+            num_in_state[current_grid[i*m + j]]++;
         }
+        }
+        // for(int k = 0; k < n*m; k++){
+        //     num_in_state[current_grid[k]]++;
+        // }
     double frac, ntot = opt->m*opt->n;
     FILE *fptr;
     if (step == 0) {

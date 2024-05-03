@@ -148,3 +148,4 @@ doing these changes fixed the bottle neck and now the bottle necks are the follo
  28.32      1.58     1.58                             game_of_life_stats._omp_fn.1 (02_gol_cpu_openmp_task.c:83 @ 1ad0)
   7.80      2.02     0.43                             game_of_life._omp_fn.1 (02_gol_cpu_openmp_task.c:41 @ 1820)
 
+
