@@ -1,48 +1,48 @@
 ========================================================= 
 GOL Running with following 
 ========================================================= 
-Requesting grid size of (100,100), which requires 0.000037 GB 
+Requesting grid size of (1000,1000), which requires 0.003725 GB 
 Number of steps 10 
 IC type 0 
 Visualization type -1 
-Neighbour rule type 1 
+Neighbour rule type 4224816 
 Boundary rule type 0 
 ========================================================= 
  
 ========================================================= 
 Core binding report:
- On node DESKTOP-1DDDBB6 : MPI Rank 0 :  Thread 0 :  Core affinity = 0-5 
+ On node nid002537 : MPI Rank 0 :  Thread 0 :  Core affinity = 31 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function report_runtime_state @ 354 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1140, 1140) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (11184, 11184, 876, 876) kilobytes 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function generate_IC @ 301 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1140, 1140) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (19000, 19000, 5944, 5944) kilobytes 
 ========================================================= 
  
 Game of Life, Step 0:
-Elapsed time 0.000229 s
+Elapsed time 0.012102 s
 Game of Life, Step 1:
-Elapsed time 0.000112 s
+Elapsed time 0.008905 s
 Game of Life, Step 2:
-Elapsed time 0.000082 s
+Elapsed time 0.008582 s
 Game of Life, Step 3:
-Elapsed time 0.000099 s
+Elapsed time 0.008905 s
 Game of Life, Step 4:
-Elapsed time 0.000081 s
+Elapsed time 0.008697 s
 Game of Life, Step 5:
-Elapsed time 0.000097 s
+Elapsed time 0.008504 s
 Game of Life, Step 6:
-Elapsed time 0.000080 s
+Elapsed time 0.008598 s
 Game of Life, Step 7:
-Elapsed time 0.000122 s
+Elapsed time 0.008747 s
 Game of Life, Step 8:
-Elapsed time 0.000077 s
+Elapsed time 0.008739 s
 Game of Life, Step 9:
-Elapsed time 0.000092 s
+Elapsed time 0.009359 s
 Finnished GOL
-Elapsed time 0.001079 s
+Elapsed time 0.091227 s

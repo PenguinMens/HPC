@@ -1,0 +1,48 @@
+========================================================= 
+GOL Running with following 
+========================================================= 
+Requesting grid size of (5000,5000), which requires 0.093132 GB 
+Number of steps 10 
+IC type 0 
+Visualization type -1 
+Neighbour rule type 1 
+Boundary rule type 0 
+========================================================= 
+ 
+========================================================= 
+Core binding report:
+ On node DESKTOP-1DDDBB6 : MPI Rank 0 :  Thread 0 :  Core affinity = 0-5 
+========================================================= 
+ 
+========================================================= 
+Memory Usage @ Function report_runtime_state @ 354 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1136, 1136) kilobytes 
+========================================================= 
+ 
+========================================================= 
+Memory Usage @ Function generate_IC @ 301 
+ (VM, Peak VM, RSS, Peak RSS) = (198400, 198400, 99716, 99716) kilobytes 
+========================================================= 
+ 
+Game of Life, Step 0:
+Elapsed time 0.047207 s
+Game of Life, Step 1:
+Elapsed time 0.041512 s
+Game of Life, Step 2:
+Elapsed time 0.040857 s
+Game of Life, Step 3:
+Elapsed time 0.039400 s
+Game of Life, Step 4:
+Elapsed time 0.038139 s
+Game of Life, Step 5:
+Elapsed time 0.038449 s
+Game of Life, Step 6:
+Elapsed time 0.033118 s
+Game of Life, Step 7:
+Elapsed time 0.038026 s
+Game of Life, Step 8:
+Elapsed time 0.038256 s
+Game of Life, Step 9:
+Elapsed time 0.038064 s
+Finnished GOL
+Elapsed time 0.393083 s

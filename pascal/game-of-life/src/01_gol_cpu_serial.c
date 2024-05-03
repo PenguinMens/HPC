@@ -51,6 +51,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     int neighbours, i, j; 
     // get rid of the double forloops and use a single for loop
     for(int k = 0; k < n*m; k++){
+        
         i = k/m;
         j = k%m;
         neighbours = 0;  // Reset the neighbor count for each cell
@@ -94,13 +95,13 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
         }
 
         // store variable because memmory retrieval could be costly
-        int temp = current_grid[k];
+ 
         
 
-
-        if(temp == ALIVE && (neighbours == 2 || neighbours == 3)){
+        
+        if(current_grid[k] == ALIVE && (neighbours == 2 || neighbours == 3)){
             next_grid[k] = ALIVE;  // Cell remains alive
-        } else if(temp == DEAD && neighbours == 3){
+        } else if(current_grid[k] == DEAD && neighbours == 3){
             next_grid[k] = ALIVE;  // Cell becomes alive
         } else {
             next_grid[k] = DEAD;  // Cell dies

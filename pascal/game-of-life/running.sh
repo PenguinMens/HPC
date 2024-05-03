@@ -7,7 +7,7 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 make clean
-make COMPILER=CRAY PROFILER=ON cpu_openmp_task_cc
+make COMPILER=CRAY PROFILER=ON cpu_openmp_loop_cc
 executable_name=$1
 someversionname=$2
 

@@ -8,7 +8,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     #pragma omp parallel  
         #pragma omp single
         #pragma omp taskloop  default(none) shared(n,m,current_grid,next_grid)
-            for(int i = 0; i < m; i++){
+            for(int i = 0; i < n; i++){
                 for(int j = 0; j < m; j++){
                     int k = i*m + j;
                     int neighbours = 0; 

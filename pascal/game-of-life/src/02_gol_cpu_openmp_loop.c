@@ -9,7 +9,7 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
     // for(int k = 0; k < n*m; k++){
     //     int i = k/m;
     //     int j = k%m;
-    for(int i = 0; i < m; i++){
+    for(int i = 0; i < n; i++){
         for(int j = 0; j < m; j++){
 
             int k = i*m + j;
@@ -55,21 +55,15 @@ void game_of_life(struct Options *opt, int *current_grid, int *next_grid, int n,
 
             // store variable because memmory retrieval could be costly
             int state;
-            #pragma omp atomic read
+   
                 state = current_grid[k];
             //dont know if doing this reduces branching but it feels liek ti does
             if(state == ALIVE && (neighbours == 2 || neighbours == 3)){
-                #pragma omp atomic write
-                    next_grid[k] = ALIVE;  // Cell remains alive
-                
+                    next_grid[k] = ALIVE;  // Cell remains alive            
             } else if(state == DEAD && neighbours == 3){
-                #pragma omp atomic write
                     next_grid[k] = ALIVE;  // Cell remains alive
-   
             } else {
-                #pragma omp atomic write
-                    next_grid[k] = DEAD;  // Cell dies
-              
+                 next_grid[k] = DEAD;  // Cell dies 
             }
 
         }
@@ -80,13 +74,9 @@ void game_of_life_stats(struct Options *opt, int step, int *current_grid){
     int m = opt->m, n = opt->n;
     for(int i = 0; i < NUMSTATES; i++) num_in_state[i] = 0;
 
-    // #pragma omp parallel for default(none) private(num_in_state,) shared( current_grid, n, m)
-    //     for(int j = 0; j < m; j++){
-    //         for(int i = 0; i < n; i++){
-    //             num_in_state[current_grid[i*m + j]]++;
-    //         }
-    //     }
 
+    //sharing grid n and m as all threads will need it
+    // we do a reduction to add up all the states from all the threads
     #pragma omp parallel for default(none)  shared( current_grid, n, m)  reduction(+:num_in_state)
         for(int k = 0; k < n*m; k++){
             num_in_state[current_grid[k]]++;
@@ -136,6 +126,7 @@ int main(int argc, char **argv)
         grid = updated_grid;
         updated_grid = tmp;
         current_step++;
+        printf("tews\n");
         get_elapsed_time(steptime);
     }
     printf("Finnished GOL\n");

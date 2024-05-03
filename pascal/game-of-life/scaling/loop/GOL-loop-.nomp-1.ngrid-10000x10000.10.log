@@ -16,33 +16,33 @@ Core binding report:
  
 ========================================================= 
 Memory Usage @ Function report_runtime_state @ 354 
- (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1160, 1160) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (3080, 3080, 1124, 1124) kilobytes 
 ========================================================= 
  
 ========================================================= 
 Memory Usage @ Function generate_IC @ 301 
- (VM, Peak VM, RSS, Peak RSS) = (784336, 784336, 392860, 392860) kilobytes 
+ (VM, Peak VM, RSS, Peak RSS) = (784336, 784336, 392640, 392640) kilobytes 
 ========================================================= 
  
 Game of Life, Step 0:
-Elapsed time 1.396039 s
+Elapsed time 1.065044 s
 Game of Life, Step 1:
-Elapsed time 0.747142 s
+Elapsed time 0.721345 s
 Game of Life, Step 2:
-Elapsed time 0.743900 s
+Elapsed time 0.687860 s
 Game of Life, Step 3:
-Elapsed time 0.715543 s
+Elapsed time 0.681964 s
 Game of Life, Step 4:
-Elapsed time 0.720416 s
+Elapsed time 0.675896 s
 Game of Life, Step 5:
-Elapsed time 0.700873 s
+Elapsed time 0.671849 s
 Game of Life, Step 6:
-Elapsed time 0.701801 s
+Elapsed time 0.671090 s
 Game of Life, Step 7:
-Elapsed time 0.679150 s
+Elapsed time 0.672584 s
 Game of Life, Step 8:
-Elapsed time 0.683368 s
+Elapsed time 0.662629 s
 Game of Life, Step 9:
-Elapsed time 0.678686 s
+Elapsed time 0.670198 s
 Finnished GOL
-Elapsed time 7.766976 s
+Elapsed time 7.180524 s

@@ -14,7 +14,7 @@ mkdir ./scaling/loop/
 executable_path="./bin/02_gol_cpu_openmp_loop" 
 nsteps=10
 for nomp in 1 2 4 8 16; do
-    for grid in 10 100 1000 10000 40000; do
+    for grid in 10 1000 5000 10000 20000 40000; do
 
         echo "Running with ${nomp} threads and ${grid}x${grid} grid"
         export OMP_NUM_THREADS=${nomp}
@@ -31,7 +31,7 @@ mkdir ./scaling/task/
 executable_path="./bin/02_gol_cpu_openmp_task" 
 nsteps=10
 for nomp in 1 2 4 8 16; do
-    for grid in 10 100 1000 10000 40000; do
+    for grid in 10 1000 5000 10000 20000 40000; do
 
         echo "Running with ${nomp} threads and ${grid}x${grid} grid"
         export OMP_NUM_THREADS=${nomp}
