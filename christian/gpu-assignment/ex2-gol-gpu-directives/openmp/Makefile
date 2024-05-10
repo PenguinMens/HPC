@@ -1,7 +1,7 @@
 # here the make accepts the compiler, gpu, calctype
 # will add a make print to indicate what types of compilations
 # are enabled.
-COMPILERTYPE ?= GNU
+COMPILERTYPE ?= HIP
 OPTLEVEL ?= 2
 PROFILER ?= OFF
 
@@ -17,11 +17,11 @@ NULL :=
 TAB := $(NULL)  $(NULL)
 
 # lets define a bunch of compilers
-CC = gcc
-FORT = gfortran
+CC = hipcc
+FORT = /opt/rocm/llvm/bin/flang
 
 # openmp flags
-OPENMPFLAGS = -fopenmp
+OPENMPFLAGS = -fopenmp -fopenmp-targets=amdgcn-amd-amdhsa -Xopenmp-target=amdgcn-amd-amdhsa -march=gfx90a
 
 PREPROCESSFLAGS = -cpp
 COMMONFLAGS = $(OPTFLAGS) $(VISUALFLAGS) 

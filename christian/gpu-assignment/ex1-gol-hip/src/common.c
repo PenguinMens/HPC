@@ -6,7 +6,7 @@
 void visualise(enum VisualiseType ivisualisetype, int step, int *grid, int n, int m){
     if (ivisualisetype == VISUAL_ASCII) visualise_ascii(step, grid, n, m);
     if (ivisualisetype == VISUAL_PNG) visualise_png(step, grid, n, m);
-    else visualise_none(step);
+    else visualise_none();
 }
 
 /// ascii visualisation
@@ -74,8 +74,7 @@ void visualise_png(int step, int *grid, int n, int m){
 #endif
 }
 
-void visualise_none(int step){
-    printf("Game of Life, Step %d:\n", step);
+void visualise_none(){
 }
 
 /// generate random IC
@@ -98,15 +97,14 @@ struct timeval init_time(){
     return curtime;
 }
 /// get the elapsed time relative to start, return current wall time
-struct timeval get_elapsed_time(struct timeval start){
+float get_elapsed_time(struct timeval start){
     struct timeval curtime, delta;
     gettimeofday(&curtime, NULL);
-    delta.tv_sec = curtime.tv_sec - start.tv_sec;
-    delta.tv_usec = curtime.tv_usec - start.tv_usec;
-    double deltas = delta.tv_sec+delta.tv_usec/1e6;
-    printf("Elapsed time %f s\n", deltas);
-    return curtime;
+    timersub(&curtime, &start, &delta);
+    float elapsed = delta.tv_sec * 1000.0f + delta.tv_usec / 1000.0f;
+    return elapsed;
 }
+
 
 /// UI
 void getinput(int argc, char **argv, struct Options *opt){
@@ -117,7 +115,7 @@ void getinput(int argc, char **argv, struct Options *opt){
   // grid size
   char statsfilename[2000] = "GOL-stats.txt";
   opt->n = atoi(argv[1]), opt->m = atoi(argv[2]);
-  opt->nsteps = -1;
+  opt->nsteps = 10;
   if (argc >= 4)
       opt->nsteps = atoi(argv[3]);
   if (argc >= 5)
